@@ -1,0 +1,58 @@
+.homeContainer {
+  width: 100%;
+  max-width: 768px;
+  margin: auto;
+  padding: 20px;
+}
+
+.titleText {
+  font-size: 40px;
+  text-align: center;
+}
+
+.actionContainer {
+  margin-top: 20px;
+  display: flex;
+  justify-content: flex-end;
+  column-gap: 4px;
+}
+
+.iconButton {
+  outline: 1px solid #cccccc;
+  border-radius: 4px;
+}
+
+.categoryGridContainer {
+  margin-top: 20px;
+}
+
+.categoryGrid {
+  min-height: 100px;
+  padding: 4px;
+  border: 1px solid black;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.categoryName {
+  font-size: 20px;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.categoryEmptyText {
+  margin-top: 20px;
+  text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .iconButton {
+    outline-color: #555555;
+  }
+
+  .categoryGrid {
+    border-color: #555555;
+  }
+}

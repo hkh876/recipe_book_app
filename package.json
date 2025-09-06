@@ -1,0 +1,37 @@
+{
+  "name": "recipe-book-app",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev --turbopack",
+    "build": "next build",
+    "build:product": "env-cmd -f .env.product next build",
+    "start": "next start",
+    "lint": "next lint",
+    "run:local": "env-cmd -f .env.local next dev"
+  },
+  "dependencies": {
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
+    "@mui/icons-material": "^7.2.0",
+    "@mui/material": "^7.2.0",
+    "@tanstack/react-query": "^5.84.1",
+    "axios": "^1.11.0",
+    "env-cmd": "^10.1.0",
+    "next": "15.4.5",
+    "react": "19.1.0",
+    "react-dom": "19.1.0",
+    "react-hook-form": "^7.62.0",
+    "react-toastify": "^11.0.5",
+    "use-long-press": "^3.3.0"
+  },
+  "devDependencies": {
+    "@eslint/eslintrc": "^3",
+    "@types/node": "^20",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "15.4.5",
+    "typescript": "^5"
+  }
+}

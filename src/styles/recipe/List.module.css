@@ -1,0 +1,70 @@
+.recipeContainer {
+  width: 100%;
+  max-width: 768px;
+  margin: auto;
+  padding: 20px;
+}
+
+.titleText {
+  font-size: 40px;
+  text-align: center;
+}
+
+.actionContainer {
+  margin-top: 20px;
+}
+
+.backButton {
+  background-color: gray;
+}
+
+.searchContainer {
+  margin-top: 10px;
+  display: flex;
+  align-items: center;
+  column-gap: 4px;
+}
+
+.searchButton,
+.createButton {
+  outline: 1px solid #cccccc;
+  border-radius: 4px;
+}
+
+.recipeListContainer {
+  margin-top: 20px;
+}
+
+.recipeListContainer > li {
+  padding: 0;
+}
+
+.recipeListContainer > li + li {
+  margin-top: 4px;
+}
+
+.fiberIcon {
+  margin-right: 8px;
+  font-size: 12px;
+}
+
+.recipeTitleText {
+  margin-left: 8px;
+}
+
+.divider {
+  width: 2px;
+  margin: 6px 0;
+  border-width: 1px;
+}
+
+.emptyText {
+  text-align: center;
+}
+
+@media (prefers-color-scheme: dark) {
+  .searchButton,
+  .createButton {
+    outline-color: #555555;  
+  }
+}

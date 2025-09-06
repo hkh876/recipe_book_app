@@ -1,0 +1,24 @@
+.progressContainer {
+  width: 70%;
+  max-width: 538px;
+  padding: 20px;
+  background-color: white;
+}
+
+.titleText {
+  margin-bottom: 10px;
+}
+
+.progressBarContainer {
+  display: flex;
+  align-items: center;
+}
+
+.progressBar {
+  width: 100%;
+}
+
+.progressText {
+  margin-left: 10px;
+  font-size: 16px;
+}
