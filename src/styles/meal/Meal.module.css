@@ -1,0 +1,111 @@
+.mealContainer {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 16px;
+}
+
+.mealContents {
+  margin-top: 8px;
+}
+
+.mealCard {
+  margin-bottom: 16px;
+  border: 1px solid #e0e0e0;
+  border-radius: 16px;
+  background-color: #ffffff;
+  box-shadow: none;
+  transition: all 0.2s ease-in-out;
+}
+
+.mealCard.today {
+  border-width: 2px;
+  border-color: #42a5f5;
+}
+
+.mealCard.editing {
+  border-width: 2px;
+  border-color: #1976d2;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.mealCardDayContainer {
+  width: 65px;
+  padding: 16px;
+  background-color: #f9f9f9;
+  color: #1a1a1a;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.mealCardDayContainer.today {
+  background-color: #1976d2;
+  color: #ffffff;
+}
+
+.mealDayNameText {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.mealDayNameText.today {
+  color: rgba(255,255,255,0.8);
+}
+
+.mealTodayText {
+  margin-top: -4px;
+  font-weight: bold;
+}
+
+.mealCardContent {
+  padding: 10px !important;
+  flex: 1;
+}
+
+.mealCancelButton {
+  color: rgba(0, 0, 0, 0.6);
+}
+
+.mealContentContainer {
+  min-height: 80px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.mealIconTextContainer {
+  margin-bottom: 6.4px;
+  display: flex;
+  align-items: center;
+}
+
+.mealIconTextContainer.last {
+  margin-bottom: 0;
+}
+
+.mealIcon {
+  margin-right: 8px;
+  opacity: 0.7;
+}
+
+.mealText {
+  color: rgba(0, 0, 0, 0.38);
+  font-size: 0.8rem;
+}
+
+.recipeFloatingButton {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1300;
+  transition: transform 0.2s ease-in-out;
+}
+
+.recipeFloatingButton:hover {
+  background-color: #1565c0;
+  transform: scale(1.1);
+}

@@ -11,11 +11,15 @@ import { Box, Button, InputBase, MenuItem, Select, SelectChangeEvent, TextField,
 import { AxiosProgressEvent } from "axios"
 import Image from "next/image"
 import { useRouter } from "next/router"
-import { ChangeEvent, useCallback, useState } from "react"
+import { ChangeEvent, useCallback, useEffect, useState } from "react"
 import { Controller, SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form"
 import { toast, ToastContainer } from "react-toastify"
 
-const Create = () => {
+interface CreateProps {
+  category: string;
+}
+
+const Create = ({ category }: CreateProps) => {
   // router
   const router = useRouter()
 
@@ -51,7 +55,7 @@ const Create = () => {
     }
   }
 
-  const { data: categoryData, isLoading: isCategoryReading } = useGetQueryEx<CategoryListResDto[]>({
+  const { data: categories, isLoading: isCategoryReading } = useGetQueryEx<CategoryListResDto[]>({
     queryKey: QueryKeyEnum.READ_CATEGORY_LIST,
     url: "/api/v1/recipe/category/list"
   })
@@ -129,6 +133,15 @@ const Create = () => {
     router.back()
   }
 
+  useEffect(() => {
+    if (categories && categories.length > 0) {
+      const matched = categories.find(categoryItem => categoryItem.name === category)
+      if (matched) {
+        setValue("categoryId", matched.id.toString())
+      }
+    }
+  }, [categories, category, setValue])
+
   return (
     <>
       <Box className={styles.recipeCreateContainer}>
@@ -187,8 +200,8 @@ const Create = () => {
                   value={getValues("categoryId")} 
                   onChange={onCategoryChange}
                 >
-                  { categoryData && categoryData.length > 0 && (
-                    categoryData.map((category) => <MenuItem value={category.id} key={category.id}>{category.name}</MenuItem>
+                  { categories && categories.length > 0 && (
+                    categories.map((category) => <MenuItem value={category.id} key={category.id}>{category.name}</MenuItem>
                   ))}
                 </Select>
               }
@@ -280,6 +293,12 @@ const Create = () => {
       <ToastContainer position={"top-center"}/>
     </>
   )
+}
+
+export const getServerSideProps = async ({ query } : { query: { category?: string } }) => {
+  const category = query.category || ""
+
+  return { props: { category } }
 }
 
 export default Create

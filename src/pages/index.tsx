@@ -8,7 +8,7 @@ import { ErrorRes, useDeleteQueryEx, useGetQueryEx, usePostQueryEx } from "@/que
 import styles from "@/styles/Home.module.css"
 import AddIcon from "@mui/icons-material/Add"
 import SearchIcon from "@mui/icons-material/Search"
-import { Box, Grid, IconButton, TextField, Typography } from "@mui/material"
+import { Box, Button, Grid, IconButton, TextField, Typography } from "@mui/material"
 import { useRouter } from "next/router"
 import { useCallback, useState } from "react"
 import { Controller, SubmitErrorHandler, SubmitHandler, useForm } from "react-hook-form"
@@ -32,6 +32,8 @@ const Home = () => {
 
   const onCategoryCreateResError = useCallback((error: ErrorRes) => {
     if (error.errorCode === ErrorCode.NOT_VALID_ERROR) {
+      toast.error(error.message, { autoClose: 1000 })
+    } else if (error.errorCode === ErrorCode.CATEGORY_ALREADY_EXIST_ERROR) {
       toast.error(error.message, { autoClose: 1000 })
     } else {
       alert("Not implement : " + error.errorCode)
@@ -110,12 +112,17 @@ const Home = () => {
     captureEvent: true
   })
 
+  const onMealClick = () => {
+    router.push({ pathname: "/meal" })
+  }
+
   return (
     <>
       <Box className={styles.homeContainer}>
         <Typography className={styles.titleText}>레시피북</Typography>
         <Box>
           <Box className={styles.actionContainer}>
+            <Button variant="contained" color="secondary" onClick={onMealClick}>식단표</Button>
             <Controller 
               control={control}
               name={"name"}
@@ -147,12 +154,14 @@ const Home = () => {
         { data && data.length > 0 ?
           <Grid className={styles.categoryGridContainer} spacing={1} container>
             { data.map(category => 
-              <Grid size={4} className={styles.categoryGrid} key={category.id}>
-                <Typography 
-                  className={styles.categoryName} 
-                  onClick={() => onCategoryClick(category.name)}
-                  {...onCategoryLongClick(category.id)}
-                >
+              <Grid 
+                size={4} 
+                className={styles.categoryGrid} 
+                key={category.id} 
+                onClick={() => onCategoryClick(category.name)}
+                {...onCategoryLongClick(category.id)}
+              >
+                <Typography className={styles.categoryName}>
                   {category.name}
                 </Typography>
               </Grid>

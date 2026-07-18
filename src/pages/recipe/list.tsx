@@ -70,7 +70,7 @@ const List = ({ searchType, searchKeyword }: ListProps) => {
     if (categoryData && categoryData.length === 0) {
       toast.error("카테고리를 먼저 생성해 주세요.", { autoClose: 1000 })
     } else {
-      router.push({ pathname: "/recipe/create" })
+      router.push({ pathname: "/recipe/create", query: (searchType && { category: searchType }) })
     }
   }
 
